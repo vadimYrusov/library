@@ -1,0 +1,11 @@
+-- Create table Product (
+--     id bigint auto_increment not null,
+--     title varchar(255) not null ,
+--     category varchar(255) not null ,
+--     publishing varchar(255) not null ,
+--     theme varchar(255) not null ,
+--     edition varchar(255) not null ,
+--     author varchar(255) not null ,
+--     release_date timestamp not null ,
+--     primary key(id)
+-- );
