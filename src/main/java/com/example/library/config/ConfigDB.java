@@ -27,6 +27,10 @@ public class ConfigDB {
 //                        "    author varchar(255) not null ," +
                         "    release_date timestamp not null ," +
                         "    primary key(id)\n" +
+                        ");" +
+                        "CREATE table Author (" +
+                        "id bigint auto_increment not null, " +
+                        "name varchar(255) not null" +
                         ");");
             }
         };
