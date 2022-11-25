@@ -17,20 +17,23 @@ public class ConfigDB {
         return new CommandLineRunner() {
             @Override
             public void run(String... args) throws Exception {
-                jdbcTemplate.execute("Create table Product (" +
-                        "    id bigint auto_increment not null," +
-                        "    title varchar(255) not null ," +
-                        "    category varchar(255) not null ," +
+
+                jdbcTemplate.execute("Create table Author (" +
+                        "id bigint auto_increment primary key , " +
+                        "name varchar(255) not null, " +
+                        "surname varchar(255) not null " +
+                        "); " +
+                        "Create table Product (" +
+                        "id bigint auto_increment primary key ," +
+                        "title varchar(255) not null ," +
+                        "category varchar(255) not null ," +
 //                        "    publishing varchar(255) not null ," +
-                        "    theme varchar(255) not null ," +
-                        "    edition varchar(255) not null ," +
+                        "theme varchar(255) not null ," +
+                        "edition varchar(255) not null ," +
 //                        "    author varchar(255) not null ," +
-                        "    release_date timestamp not null ," +
-                        "    primary key(id)\n" +
-                        ");" +
-                        "CREATE table Author (" +
-                        "id bigint auto_increment not null, " +
-                        "name varchar(255) not null" +
+                        "release_date timestamp not null ," +
+                        "author bigint, " +
+                        "foreign key (author) references Author(id) " +
                         ");");
             }
         };

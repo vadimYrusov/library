@@ -2,6 +2,7 @@ package com.example.library.model;
 
 import lombok.Data;
 import org.springframework.data.annotation.Id;
+import org.springframework.data.jdbc.core.mapping.AggregateReference;
 
 import java.time.LocalDateTime;
 
@@ -21,11 +22,11 @@ public class Product {
 
     private String edition;
 
-//    private String author;
+    private AggregateReference<Author, Long> author;
 
     private LocalDateTime release_date;
 
-    public Product(String title, String category, String theme, String edition) {
+    public Product(String title, String category, String theme, String edition, AggregateReference<Author, Long> author) {
         this.title = title;
         this.category = category;
 //        this.publishing = publishing;
@@ -33,5 +34,6 @@ public class Product {
         this.edition = edition;
 //        this.author = author;
         this.release_date = LocalDateTime.now();
+        this.author = author;
     }
 }
