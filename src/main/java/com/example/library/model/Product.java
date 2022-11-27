@@ -16,7 +16,7 @@ public class Product {
 
     private String category;
 
-//    private String publishing;
+    private AggregateReference<Publishing, Long> publishing;
 
     private String theme;
 
@@ -26,14 +26,13 @@ public class Product {
 
     private LocalDateTime release_date;
 
-    public Product(String title, String category, String theme, String edition, AggregateReference<Author, Long> author) {
+    public Product(String title, String category, String theme, String edition, AggregateReference<Author, Long> author, AggregateReference<Publishing, Long> publishing) {
         this.title = title;
         this.category = category;
-//        this.publishing = publishing;
         this.theme = theme;
         this.edition = edition;
-//        this.author = author;
         this.release_date = LocalDateTime.now();
         this.author = author;
+        this.publishing = publishing;
     }
 }

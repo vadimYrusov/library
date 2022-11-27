@@ -2,8 +2,10 @@ package com.example.library;
 
 import com.example.library.model.Author;
 import com.example.library.model.Product;
+import com.example.library.model.Publishing;
 import com.example.library.repository.AuthorRepository;
 import com.example.library.repository.ProductRepository;
+import com.example.library.repository.PublishingRepository;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -18,10 +20,11 @@ public class LibraryApplication {
 	}
 
 	@Bean
-	CommandLineRunner commandLineRunner(ProductRepository products, AuthorRepository authors) {
+	CommandLineRunner commandLineRunner(ProductRepository products, AuthorRepository authors, PublishingRepository publishers) {
 		return args -> {
 			AggregateReference<Author, Long> john = AggregateReference.to(authors.save(new Author(null, "John", "Tolkien")).getId());
-			products.save(new Product("Lord of the ring", "book", "fantasy", "Standard", john));
+			AggregateReference<Publishing, Long> fan = AggregateReference.to(publishers.save(new Publishing(null, "FantasyBooks")).getId());
+			products.save(new Product("Lord of the ring", "book", "fantasy", "Standard", john, fan));
 		};
 	}
 }

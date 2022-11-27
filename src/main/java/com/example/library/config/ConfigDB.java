@@ -23,17 +23,21 @@ public class ConfigDB {
                         "name varchar(255) not null, " +
                         "surname varchar(255) not null " +
                         "); " +
+                        "Create table Publishing (" +
+                        "id bigint auto_increment primary key, " +
+                        "publishing_house_name varchar(255) not null " +
+                        "); " +
                         "Create table Product (" +
                         "id bigint auto_increment primary key ," +
                         "title varchar(255) not null ," +
                         "category varchar(255) not null ," +
-//                        "    publishing varchar(255) not null ," +
                         "theme varchar(255) not null ," +
                         "edition varchar(255) not null ," +
-//                        "    author varchar(255) not null ," +
                         "release_date timestamp not null ," +
                         "author bigint, " +
-                        "foreign key (author) references Author(id) " +
+                        "foreign key (author) references Author(id), " +
+                        "publishing bigint, " +
+                        "foreign key (publishing) references Publishing(id)" +
                         ");");
             }
         };
