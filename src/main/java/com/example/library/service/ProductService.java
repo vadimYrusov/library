@@ -39,7 +39,7 @@ public class ProductService implements ProductServiceInterface {
     public List<Product> findByAuthor(String name) {
         List products = new ArrayList<>();
         for (Product product : productRepository.findAll()) {
-            if (authorRepository.findById(product.getAuthor().getId()).get().getName().equals(name)) {
+            if (authorRepository.findById(product.getAuthor().getId()).get().getName().toLowerCase().equals(name.toLowerCase())) {
                 products.add(product);
             }
         }
@@ -50,7 +50,7 @@ public class ProductService implements ProductServiceInterface {
     public List<Product> findByPublisher(String name) {
         List products = new ArrayList<>();
         for (Product product : productRepository.findAll()) {
-            if (publishingRepository.findById(product.getPublishing().getId()).get().getPublishing_house_name().equals(name)) {
+            if (publishingRepository.findById(product.getPublishing().getId()).get().getPublishing_house_name().toLowerCase().equals(name.toLowerCase())) {
                 products.add(product);
             }
         }
@@ -61,7 +61,7 @@ public class ProductService implements ProductServiceInterface {
     public List<Product> findByCategory(String category) {
         List products = new ArrayList<>();
         for (Product product : productRepository.findAll()) {
-            if (product.getCategory().equals(category)) {
+            if (product.getCategory().toLowerCase().equals(category.toLowerCase())) {
                 products.add(product);
             }
         }
